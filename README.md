@@ -17,5 +17,7 @@ All done? Click the 'Take Snapshot' button to generate an image you can download
 To Do: Aesthetics. This is a pretty plain canvas without much customisation. If anyone wants to add font, size, 
 and color selectors that would help. Some of my centering and layout is pretty primitive too. 
 
+Mobile compatibility. Uff. Canvas resizing with reorientation of a mobile device is HARD. Especially when the final product needs to layout text relative to a position on the image. If anybody wants to tackle that, yay!
+
 
 
