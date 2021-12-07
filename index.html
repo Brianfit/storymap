@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML>
 <html>
   <head>
@@ -36,7 +35,7 @@
 <!-- Let's define our canvas. --> 
     <canvas id="myCanvas" width="1200" height="800"></canvas>
     
-    <center><p style="margin-left: 0 auto">Fill in the boxes below with your story elements. Press "DISPLAY MAP" to see your finished masterpiece. Then take a screenshot to save. Want to learn more about how to use this tool? There's a <a href="StoryMaps101.pdf" target="_blank">quick guide here</a>, or get in touch with <a href="http://www.dancing-fox.com">Dancing Fox</a> to arrange a training or workshop. </p></center>
+    <center><p style="margin-left: 0 auto">Fill in the boxes below with your story elements. Press "DISPLAY MAP" to see your finished masterpiece. Then take a screenshot to save. Want to learn more about how to use this tool? There are some <a href="tips-and-tricks.jpg" target="_blank">Tips & Tricks here</a>, or get in touch with <a href="http://www.dancing-fox.com">Dancing Fox</a> to arrange a training or workshop. </p></center>
     <script>
       var canvas = document.getElementById('myCanvas');
       var context = canvas.getContext('2d');
@@ -53,6 +52,7 @@
       var value3 = "Values";
       var moral = "The Moral of the story";
       var storyname = "The S/Hero's Journey";
+      var role = "Our Role";
     
 
       var wrapit = false;
@@ -75,6 +75,7 @@ context.fillText(vision, 900, 450);
 context.fillText(value1, 550, 525);
 context.fillText(value2, 550, 550);
 context.fillText(value3, 550, 575);
+context.fillText(role,975,75);
 wrapText(context, moral, 500, 600, 250, 25);
 
       };
@@ -84,17 +85,18 @@ wrapText(context, moral, 500, 600, 250, 25);
 // The reload function reloads the picture and assigns labels to the form results  
     
      var reload = function(){
-     storyname = story.storyname.value;
-     broken = story.broken.value;
-     hero = story.hero.value;
-     gift = story.gift.value;
-     mentor = story.mentor.value;
-     monster = story.monster.value;
-     vision = story.vision.value;
-     value1 = story.value1.value;
-     value2 = story.value2.value;
-     value3 = story.value3.value;
-     moral = story.moral.value;
+     storyname = story.storyname.value.substring(0,75);
+     broken = story.broken.value.substring(0,200);
+     hero = story.hero.value.substring(0,200);
+     gift = story.gift.value.substring(0,200);
+     mentor = story.mentor.value.substring(0,200);
+     monster = story.monster.value.substring(0,175);
+     vision = story.vision.value.substring(0,200);
+     value1 = story.value1.value.substring(0,100);
+     value2 = story.value2.value.substring(0,100);
+     value3 = story.value3.value.substring(0,100);
+     moral = story.moral.value.substring(0,200);
+     role = story.role.value.substring(0,125);
      
      context.clearRect(0, 0, canvas.width, canvas.height);
      
@@ -108,13 +110,14 @@ var width = context.measureText(storyname).width;
 var centerx = 545 - (width / 2);
 console.log(centerx);  
 ChangeFont('14','darkblue');
-textRender('Story',storyname,centerx,75,800);
+textRender('Story',storyname,5,75,800);
 ChangeFont('12','black');
 textRender("Broken World",broken,5,525,150);
 textRender("Hero",hero,225,200,150);
 textRender("Gift",gift,450,100,225);
 textRender("Mentor",mentor,700,200,140);
-textRender("The Monster",monster,1000,250,150);
+textRender("Our Role",role,1000,75,150);
+textRender("The Monster",monster,1000,275,150);
 textRender("The Vision",vision,950,525,225);
 
 
@@ -243,6 +246,7 @@ javascript:void(window.open().location = document.getElementsByTagName("canvas")
   The Mentor: <input type="text" class="form-control" name="mentor"><br>
   The Monster: <input type="text" class="form-control" name="monster"><br>
   The Vision: <input type="text" class="form-control" name="vision"><br>
+  Our Role (optional): <input type="text" class="form-control" name="role"><br>
   The Values: <input type="text" class="form-control" name="value1"><br>
   The Values: <input type="text" class="form-control" name="value2"><br>
   The Values: <input type="text" class="form-control" name="value3"><br>
@@ -278,6 +282,6 @@ javascript:void(window.open().location = document.getElementsByTagName("canvas")
  
  <script>  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 alert('Aw snap. You may find using this page frustrating on a mobile device. Try it on a desktop! (or psst, if you are a developer, fork the code and help a fox make it mobile friendly-like!)');}
-alertify.alert("Welcome to Mister Fox's Story Mapping gizmo. This is The Hero's Journey, one of the most common story arcs in the world. Use it to <strong>create a simple schematic to explain your activist campaign.</strong> Based on ideas from Jonah Sach's book <a href='http://www.jonahsachs.com/books-1/'>Winning the Story Wars</a> and <a href='http://moonshot.us/team/drew-beam'>illustrations by Drew Beam.</a><br /><br /><strong>Instructions:</strong> Fill out the fields below the image with your story's elements. When you click 'Submit' the fields will appear in the image. All done? Click the 'Take Snapshot' button to generate an image you can download.<br /><br /><br /><br /><span style='font-size:x-small'><a href='https://github.com/Brianfit/storymap/tree/master'><img src='cc-by-nc-sa.png' width='40' height='14'><br />Brought to you by Dancing Fox. You can fork this open source code on GitHub</a></span>");</script>
+alertify.alert("Welcome to Mister Fox's Story Mapping gizmo. This is The Hero's or Heroine's Journey, a story template that exists in every culture in the world. Use it to <strong>create a simple schematic to explain your activist campaign.</strong> Based on ideas from Jonah Sach's book <a href='http://www.jonahsachs.com/books-1/'>Winning the Story Wars</a> and the <a href='http://moonshot.us/team/drew-beam'>illustrations by Drew Beam.</a><br /><br /><strong>Instructions:</strong> Fill out the fields below the image with your story's elements. When you click 'Submit' the fields will appear in the image. All done? Click the 'Take Snapshot' button to generate an image you can download.<br /><br /><br /><br /><span style='font-size:x-small'><a href='https://github.com/Brianfit/storymap/tree/master'><img src='cc-by-nc-sa.png' width='40' height='14'><br />Brought to you by Dancing Fox. You can fork this open source code on GitHub</a></span>");</script>
   </body>
 </html>  
