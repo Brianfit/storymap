@@ -27,6 +27,9 @@
    <div class="container" style="background-color: white;">
   <div class="imageframe">
   <div id="result" class="resultstyle text-center"></div></div>
+  <div class="row" style="text-align:Right">
+<a href="  https://www.dancing-fox.com" target="_blank">More Foxiness</a>
+  </div>
 <!-- The first row is the picture: full size.  -->
    <div class="row">
 <div id = "storymapimage" class = "col-md-12">
@@ -41,17 +44,17 @@
       var context = canvas.getContext('2d');
       
 //       The default values texts for the story map get loaded here.
-      var broken = "The Broken Land"; 
-      var hero = "The Hero";
-      var gift = "The Gift";
-      var mentor = "The Mentor";
-      var monster = "The Monster";
-      var vision = "The Vision";
+      var broken = "Broken World"; 
+      var hero = "Hero/Heroine";
+      var gift = "Gift";
+      var mentor = "Mentor";
+      var monster = "Monster";
+      var vision = "Better World";
       var value1 = "Values";
       var value2 = "Values";
       var value3 = "Values";
-      var moral = "The Moral of the story";
-      var storyname = "The S/Hero's Journey";
+      var moral = "Moral";
+      var storyname = "The Heroine/Hero's Journey";
       var role = "Our Role";
     
 
@@ -63,9 +66,15 @@
 
       imageObj.onload = function() {
         context.drawImage(imageObj, 0, 0);
+        
+                context.font = '14pt Arial';
+context.fillStyle = 'darkblue';
+context.fillText(storyname,450,50);
+
         context.font = '10pt Arial';
 context.fillStyle = 'darkgrey';
-context.fillText(storyname,500,75);
+
+
 context.fillText(broken, 100, 450);
 context.fillText(hero, 400, 200);
 context.fillText(gift, 525, 125);
@@ -76,13 +85,14 @@ context.fillText(value1, 550, 525);
 context.fillText(value2, 550, 550);
 context.fillText(value3, 550, 575);
 context.fillText(role,975,75);
-wrapText(context, moral, 500, 600, 250, 25);
+wrapText(context, moral, 553, 600, 250, 25);
 
       };
       imageObj.src = 'storymapblank.png';
       
       
-// The reload function reloads the picture and assigns labels to the form results  
+// The reload function reloads the picture and assigns labels to the form results 
+// If you change the substring lengths here, change the input maxlength values as well.  
     
      var reload = function(){
      storyname = story.storyname.value.substring(0,75);
@@ -110,15 +120,16 @@ var width = context.measureText(storyname).width;
 var centerx = 545 - (width / 2);
 console.log(centerx);  
 ChangeFont('14','darkblue');
-textRender('Story',storyname,5,75,800);
+textRender('',storyname,5,25,800);
 ChangeFont('12','black');
-textRender("Broken World",broken,5,525,150);
-textRender("Hero",hero,225,200,150);
-textRender("Gift",gift,450,100,225);
-textRender("Mentor",mentor,700,200,140);
-textRender("Our Role",role,1000,75,150);
-textRender("The Monster",monster,1000,275,150);
-textRender("The Vision",vision,950,525,225);
+textRender("Broken World: ",broken,5,525,150);
+textRender("Hero/Heroine: ",hero,225,200,150);
+textRender("Gift: ",gift,450,100,225);
+textRender("Mentor: ",mentor,700,200,140);
+if (role.length > 2) {
+textRender("Our Role: ",role,1000,75,150);}
+textRender("Monster: ",monster,1000,275,150);
+textRender("Better World: ",vision,950,525,225);
 
 
 
@@ -136,7 +147,7 @@ centerText(value2, 570, 575, 250);
 centerText(value3, 570, 600, 250);}
 ChangeFont('12','black');
 context.textAlign = "center";
-context.fillText("The Moral:",570,675);
+context.fillText("Moral:",570,675);
 context.fillText(moral, 570, 700, 800);
 context.textAlign = "left";
 
@@ -148,7 +159,7 @@ context.textAlign = "left";
      var fieldTest = $.trim(fieldname);
      console.log(fieldTest);
      if (fieldTest !== '') {
-     fieldname = label+': '+fieldname}
+     fieldname = label+fieldname}
      measure(fieldname,widthmax); 
      if (wrapit = false) {context.fillText(fieldname, x, y);}
 else {wrapText(context,fieldname,x, y, widthmax, 18);}
@@ -236,21 +247,21 @@ javascript:void(window.open().location = document.getElementsByTagName("canvas")
     </div>
 <div class="row">    
        <div class="col-md-4"></div>
-
+<!-- If you change the maxlength values here, change the substring values in the reload function too. -->
     <div class="col-md-4">
     <form name="story" action="javascript:reload();window.scrollTo(0,0);" class="form-signin" method="get">
-  Story Name (and your name): <input type="text" class="form-control" name="storyname"><br>  
-  The Broken Land: <input type="text" class="form-control" name="broken"><br>
-  The Hero: <input type="text" class="form-control" name="hero"><br>
-  The Gift: <input type="text" class="form-control" name="gift"><br>
-  The Mentor: <input type="text" class="form-control" name="mentor"><br>
-  The Monster: <input type="text" class="form-control" name="monster"><br>
-  The Vision: <input type="text" class="form-control" name="vision"><br>
-  Our Role (optional): <input type="text" class="form-control" name="role"><br>
-  The Values: <input type="text" class="form-control" name="value1"><br>
-  The Values: <input type="text" class="form-control" name="value2"><br>
-  The Values: <input type="text" class="form-control" name="value3"><br>
-  The Moral: <input type="text" class="form-control" name="moral"><br>
+  Story Name (and your name): <input type="text" class="form-control" name="storyname" maxlength="75"><br>  
+  Broken World: <input type="text" class="form-control" name="broken" maxlength="200"><br>
+  Hero: <input type="text" class="form-control" name="hero" maxlength="200"><br>
+  Gift: <input type="text" class="form-control" name="gift" maxlength="200"><br>
+  Mentor: <input type="text" class="form-control" name="mentor" maxlength="200"><br>
+  Monster: <input type="text" class="form-control" name="monster" maxlength="175"><br>
+  Better World: <input type="text" class="form-control" name="vision" maxlength="200"><br>
+  Our Role (optional): <input type="text" class="form-control" name="role" maxlength="125"><br>
+  Values: <input type="text" class="form-control" name="value1" maxlength="100"><br>
+  Values: <input type="text" class="form-control" name="value2" maxlength="100"><br>
+  Values: <input type="text" class="form-control" name="value3" maxlength="100"><br>
+  Moral: <input type="text" class="form-control" name="moral" maxlength="125"><br>
   <input type="submit" value="Display Story Map" style="background-color:yellow">
   <br />
  <br />
